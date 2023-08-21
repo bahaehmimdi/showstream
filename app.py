@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-locations = []  # List to store locations
+locations = {}  # List to store locations
 location_id = 0  # Unique ID for each location
 
 @app.route('/save_location', methods=['POST'])
