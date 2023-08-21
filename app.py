@@ -11,9 +11,10 @@ def save_location():
     data = request.json
     latitude = data.get('latitude')
     longitude = data.get('longitude')
-    
+    name = data.get('name')
+
     location_id += 1
-    locations[str(len(locations))]={"id": location_id, "latitude": latitude, "longitude": longitude}
+    locations[str(len(locations))]={"id": location_id, "latitude": latitude, "longitude": longitude,"name":name}
     
     return jsonify({"message": "Location saved successfully!"})
 
