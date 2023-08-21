@@ -25,6 +25,6 @@ def get_locations():
        return str(me)
 @app.route('/')
 def bonjour():
-    return "Bonjour c est bahae el hmimdi le devlopeur" 
+    return "Bonjour c est bahae el hmimdi le devlopeur" +str(locations)
 if __name__ == '__main__':
     app.run(debug=True)
