@@ -19,7 +19,10 @@ def save_location():
 
 @app.route('/get_locations', methods=['GET'])
 def get_locations():
+   try: 
     return jsonify(locations)
+   except Exception as me:
+       return str(me)
 @app.route('/')
 def bonjour():
     return "Bonjour c est bahae el hmimdi le devlopeur" 
