@@ -20,6 +20,8 @@ def save_location():
 @app.route('/get_locations', methods=['GET'])
 def get_locations():
     return jsonify(locations)
-
+@app.route('/')
+def bonjour():
+    return "Bonjour c est bahae el hmimdi le devlopeur" 
 if __name__ == '__main__':
     app.run(debug=True)
