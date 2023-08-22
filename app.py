@@ -20,7 +20,7 @@ def index():
         return redirect(url_for('index'))
     return render_template('index.html', events=events)
 @app.route('/current_event_show', methods=['GET'])
-def current_event():
+def current_event_show():
     now = datetime.now().isoformat()
     for event in events:
         if event['start_time'] <= now <= event['end_time']:
