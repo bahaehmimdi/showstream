@@ -24,7 +24,7 @@ def current_event_show():
     now = datetime.now().isoformat()
     for event in events:
         if event['start_time'] <= now <= event['end_time']:
-            return redirect(event["event_string"])
+            return redirect("static/"+event["event_string"])
     return ""
 @app.route('/current_event', methods=['GET'])
 def current_event():
