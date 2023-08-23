@@ -54,7 +54,7 @@ def clear():
 def video(video_filename):
    try: 
     video_path = f"https://showstream-32id.onrender.com/static/{video_filename}"
-    return render_template('video.html', video_path=video_path.replace("/video",""))
+    return render_template('video.html', video_path=video_path.replace("/video",""), audio_path=video_path.replace("/video","").replace("mp4","mp3"))
    except Exception as bahae:
        return str(bahae)
  
