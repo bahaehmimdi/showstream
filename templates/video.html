@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video in iFrame</title>
+</head>
+<body>
+    <iframe id="videoIframe" width="560" height="315" src="{{ video_path }}" frameborder="0" allowfullscreen></iframe>
+
+    <script>
+        // Get the iframe containing the video
+        var iframe = document.getElementById('videoIframe');
+
+        // Wait for the iframe to load
+        iframe.onload = function() {
+            // Get the video element inside the iframe
+            var video = iframe.contentDocument.querySelector('video');
+
+            // If the video element is found
+            if (video) {
+                // Add an event listener to detect when the video has ended
+                video.addEventListener('ended', function() {
+                    // Refresh the page once the video is finished
+                    location.reload();
+                });
+            }
+        };
+    </script>
+</body>
+</html>
