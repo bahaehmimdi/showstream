@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video in iFrame</title>
+    <title>Video Autoplay and Unmute</title>
 </head>
 <body>
-    <iframe id="videoIframe" width="560" height="315" src="{{ video_path }}" frameborder="0" allowfullscreen></iframe>
+    <video id="videoPlayer" width="560" height="315" controls autoplay muted>
+        <source src="{{ video_path }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
     <script>
-        // Get the iframe containing the video
-        var iframe = document.getElementById('videoIframe');
+        // Get the video element
+        var video = document.getElementById('videoPlayer');
 
-        // Wait for the iframe to load
-        iframe.onload = function() {
-            // Get the video element inside the iframe
-            var video = iframe.contentDocument.querySelector('video');
+        // Add an event listener to detect when the video starts playing
+        video.addEventListener('playing', function() {
+            // Unmute the video
+            video.muted = false;
+        });
 
-            // If the video element is found
-            if (video) {
-                // Add an event listener to detect when the video has ended
-                video.addEventListener('ended', function() {
-                    // Refresh the page once the video is finished
-                    location.reload();
-                });
-            }
-        };
+        // Add an event listener to detect when the video has ended
+        video.addEventListener('ended', function() {
+            // Refresh the page once the video is finished
+            location.reload();
+        });
     </script>
 </body>
 </html>
