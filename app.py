@@ -32,7 +32,7 @@ def current_event_show():
     
 @app.route('/current_event', methods=['GET'])
 def current_event():
-    now = datetime.now()
+    now = datetime.now()+ timedelta(hours=2)
     for event in events:
         event_start = datetime.fromisoformat(event['start_time'])
         event_end = datetime.fromisoformat(event['end_time'])
