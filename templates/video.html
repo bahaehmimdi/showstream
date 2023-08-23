@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Autoplay and Unmute</title>
+    <title>Video Start with JavaScript</title>
 </head>
 <body>
-    <video id="videoPlayer" width="560" height="315" controls autoplay muted>
+    <video id="videoPlayer" width="560" height="315" controls muted>
         <source src="{{ video_path }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -15,10 +15,15 @@
         // Get the video element
         var video = document.getElementById('videoPlayer');
 
-        // Add an event listener to detect when the video starts playing
-        video.addEventListener('playing', function() {
-            // Unmute the video
-            video.muted = false;
+        // Play the video using JavaScript once the DOM is fully loaded
+        window.addEventListener('DOMContentLoaded', function() {
+            video.play().then(function() {
+                // Video playback started successfully
+                video.muted = false;  // Unmute the video
+            }).catch(function(error) {
+                // Video playback failed. This can happen, for example, if the user hasn't interacted with the document first.
+                console.error("Video playback failed:", error);
+            });
         });
 
         // Add an event listener to detect when the video has ended
@@ -28,4 +33,6 @@
         });
     </script>
 </body>
+</html>
+
 </html>
