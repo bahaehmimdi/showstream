@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-CORS(app)
+
 # In-memory database for simplicity
 events = []
 
@@ -53,7 +53,7 @@ def clear():
 @app.route('/video/<video_filename>')
 def video(video_filename):
    try: 
-    video_path = f"https://showstream-32id.onrender.com/static/{video_filename}"
+    video_path = f"http://diapo.pythonanywhere.com/static/{video_filename}"#f"https://showstream-32id.onrender.com/static/{video_filename}"
     return redirect(video_path)#render_template('video.html', video_path=video_path.replace("/video",""), audio_path=video_path.replace("/video","").replace("mp4","mp3"))
    except Exception as bahae:
        return str(bahae)
