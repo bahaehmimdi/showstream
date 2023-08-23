@@ -53,7 +53,7 @@ def clear():
 @app.route('/video/<video_filename>')
 def video(video_filename):
    try: 
-    video_path = f"static/{video_filename}"
+    video_path = f"https://showstream-32id.onrender.com/static/{video_filename}"
     return render_template('video.html', video_path=video_path.replace("/video",""))
    except Exception as bahae:
        return str(bahae)
