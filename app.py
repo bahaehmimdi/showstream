@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from datetime import datetime
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def index():
 
 @app.route('/current_event_show', methods=['GET'])
 def current_event_show():
-    now = datetime.now()
+    now = datetime.now() + timedelta(hours=2)
     for event in events:
         event_start = datetime.fromisoformat(event['start_time'])
         event_end = datetime.fromisoformat(event['end_time'])
