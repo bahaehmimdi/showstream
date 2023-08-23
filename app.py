@@ -19,18 +19,25 @@ def index():
         })
         return redirect(url_for('index'))
     return render_template('index.html', events=events)
+
 @app.route('/current_event_show', methods=['GET'])
 def current_event_show():
-    now = datetime.now().isoformat()
+    now = datetime.now()
     for event in events:
-        if event['start_time'] <= now <= event['end_time']:
-            return redirect("static/"+event["event_string"])
-    return ""
+        event_start = datetime.fromisoformat(event['start_time'])
+        event_end = datetime.fromisoformat(event['end_time'])
+        if event_start <= now <= event_end:
+            return  redirect("static/"+event["event_string"])
+    return jsonify({'event_string': 'nothing'})
+    
 @app.route('/current_event', methods=['GET'])
 def current_event():
-    now = datetime.now().isoformat()
+    now = datetime.now()
     for event in events:
-        if event['start_time'] <= now <= event['end_time']:
+        event_start = datetime.fromisoformat(event['start_time'])
+        event_end = datetime.fromisoformat(event['end_time'])
+        if event_start <= now <= event_end:
+            event['now']=str(now)
             return jsonify(event)
     return jsonify({'event_string': 'nothing'})
 
