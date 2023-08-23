@@ -39,7 +39,7 @@ def current_event():
         if event_start <= now <= event_end:
             event['now']=str(now)
             return jsonify(event)
-    return jsonify({'event_string': 'nothing'})
+    return jsonify({'event_string': 'nothing at'+now.isoformat()})
 
 @app.route('/display', methods=['GET'])
 def display():
