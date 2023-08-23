@@ -27,7 +27,8 @@ def current_event_show():
         event_start = datetime.fromisoformat(event['start_time'])
         event_end = datetime.fromisoformat(event['end_time'])
         if event_start <= now <= event_end:
-            return  redirect("static/"+event["event_string"]+".mp4")
+        #    return  redirect("static/"+event["event_string"]+".mp4")
+            return redirect(event["event_string"]+".mp4")
     return jsonify({'event_string': 'nothing'})
     
 @app.route('/current_event', methods=['GET'])
@@ -48,5 +49,12 @@ def display():
 def clear():
     events.clear()
     return "cleared"
+
+@app.route('/video/<video_filename>')
+def video(video_filename):
+    video_path = f"static/{video_filename}"
+    return render_template('video.html', video_path=video_path)
+
+ 
 if __name__ == '__main__':
     app.run(debug=True)
