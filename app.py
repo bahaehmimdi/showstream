@@ -54,7 +54,7 @@ def clear():
 def video(video_filename):
    try: 
     video_path = f"static/{video_filename}"
-    return render_template('video.html', video_path=video_path)
+    return render_template('video.html', video_path=video_path.replace("/video",""))
    except Exception as bahae:
        return str(bahae)
  
