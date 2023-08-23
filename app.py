@@ -44,6 +44,9 @@ def current_event():
 @app.route('/display', methods=['GET'])
 def display():
     return render_template('display.html')
-
+@app.route('/clear', methods=['GET'])
+def clear():
+    events.clear()
+    return "cleared"
 if __name__ == '__main__':
     app.run(debug=True)
