@@ -27,7 +27,7 @@ def current_event_show():
         event_start = datetime.fromisoformat(event['start_time'])
         event_end = datetime.fromisoformat(event['end_time'])
         if event_start <= now <= event_end:
-            return  redirect("static/"+event["event_string"])
+            return  redirect("static/"+event["event_string"]+".mp4")
     return jsonify({'event_string': 'nothing'})
     
 @app.route('/current_event', methods=['GET'])
