@@ -7,8 +7,9 @@ app = Flask(__name__)
 events = []
 @app.route('/postlist', methods=['POST'])
 def post_list():
-    data = request.json
-    return str(data)
+   # data = request.json
+   # return str(data)
+    return redirect("https://qias.pythonanywhere.com/postlist")
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
