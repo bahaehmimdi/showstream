@@ -5,7 +5,10 @@ app = Flask(__name__)
 
 # In-memory database for simplicity
 events = []
-
+@app.route('/postlist', methods=['POST'])
+def post_list():
+    data = request.json
+    return str(data)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
