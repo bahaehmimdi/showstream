@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from datetime import datetime, timedelta
-import requets
+import requests
 app = Flask(__name__)
 
 # In-memory database for simplicity
