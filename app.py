@@ -9,7 +9,7 @@ events = []
 def post_list():
    data = request.json
    # return str(data)
-   requests.post("https://qias.pythonanywhere.com/postlist", json=data)
+   requests.post("https://qias.pythonanywhere.com/postlist", headers={"Content-Type": "application/json"}, json=data)
    return "done"
 @app.route('/', methods=['GET', 'POST'])
 def index():
