@@ -7,7 +7,7 @@ app = Flask(__name__)
 events = []
 @app.route('/postlist', methods=['POST'])
 def post_list():
-    data = request.json
+   data = request.json
    # return str(data)
    requests.post("https://qias.pythonanywhere.com/postlist", json=data)
    return "done"
